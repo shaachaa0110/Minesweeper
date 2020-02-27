@@ -116,42 +116,46 @@ public class MSButton
     {
         clicked = true;
         if(mouseButton == RIGHT){
-            flagged = !flagged
+            if(flagged == true){
+                flagged = false;
+            }else{
+                flagged = true;
+            }
             if(flagged == false){
                 clicked = false;
             }
-        }else if(mines.contains(button.this)){
+        }else if(mines.contains(this)){
             displayLosingMessage();
-        }else if(countMines(button.this.myRow, button.this.myCol) > 0){
-            setLabel(countMines(button.this.myRow, button.this.myCol));
+        }else if(countMines(this.myRow, this.myCol) > 0){
+            setLabel(countMines(this.myRow, this.myCol));
         }else{
-            if(isValid(row-1, col-1)){
-                mousePressed();
+            if(isValid(this.myRow-1, this.myCol-1)){
+                buttons[this.myRow-1][this.myCol-1].mousePressed();
             }
-            if(isValid(row-1, col)){
-                mousePressed();
+            if(isValid(this.myRow-1, this.myCol)){
+                buttons[this.myRow-1][this.myCol].mousePressed();
             }
-            if(isValid(row-1, col+1)){
-                mousePressed();
+            if(isValid(this.myRow-1, this.myCol+1)){
+                buttons[this.myRow-1][this.myCol+1].mousePressed();
             }
-            if(isValid(row, col-1)){
-                mousePressed();            
+            if(isValid(this.myRow, this.myCol-1)){
+                buttons[this.myRow][this.myCol-1].mousePressed();            
             }
-            if(isValid(row, col+1)){
-                mousePressed();
+            if(isValid(this.myRow, this.myCol+1)){
+                buttons[this.myRow][this.myCol+1].mousePressed();
             }
-            if(isValid(row+1, col-1)){
-                mousePressed();
+            if(isValid(this.myRow+1, this.myCol-1)){
+                buttons[this.myRow+1][this.myCol-1].mousePressed();
             }
-            if(isValid(row+1, col)){
-                mousePressed();
+            if(isValid(this.myRow+1, this.myCol)){
+                buttons[this.myRow+1][this.myCol].mousePressed();
             }
-            if(isValid(row+1, col+1)){
-                mousePressed();
+            if(isValid(this.myRow+1, this.myCol+1)){
+                buttons[this.myRow+1][this.myCol+1].mousePressed();
             }
         }
     }
-}
+
     public void draw () 
     {    
         if (flagged)
